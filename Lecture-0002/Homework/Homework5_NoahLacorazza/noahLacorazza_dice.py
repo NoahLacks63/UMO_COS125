@@ -10,6 +10,9 @@
 # Collaboration:
 # N/A
 
+# IMPORTANT
+# Dr. Gurney was concerned that my docstrings may be a signifier of AI. I come from a java background where we use
+# javadocs. I just like using doc comments.
 import random
 
 points = {}
@@ -91,12 +94,25 @@ def find_points(dice):
     Returns:
         dict (int, int): A dictionary that gives point values to each die face.
     """
-    points = {}
-    sorted_dice = sorted(dice, key=dice.get)
+    keys = list(dice.keys())
+    values = list(dice.values())
 
+    sorted_dice = []
+    
+    for i in range(len(keys)):
+        max = 0
+
+        for n in range(len(keys)):
+            if values[n] > values[max]:
+                max = n
+        
+        sorted_dice.append(keys[max])
+        values[max] = 0
+
+    print(sorted_dice)
     i = 1
-    for key in sorted_dice:
-        points[key] = i * key
+    for n in sorted_dice:
+        points[n] = i * n
         i += 1
     
     return points
@@ -109,13 +125,10 @@ def print_dict(dictionary, title):
         dictionary (dict): The dictionary to be printed out.
         title (str): The title of what the dictionary represents.
     """
-    keys = list(dictionary.keys())
-    values = list(dictionary.values())
-
     print(title)
     print("--------------------")
 
-    for i in range(len(dictionary)):
-        print(f"{keys[i]:5} | {values[i]}")
+    for key, value in dictionary.items():
+        print(f"{key:5} | {value}")
 
 main()
