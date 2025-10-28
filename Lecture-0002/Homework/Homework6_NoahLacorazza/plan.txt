@@ -1,0 +1,33 @@
+candidates = {
+    user_inputted_name : voters
+    user_inputted_name : voters
+    user_inputted_name : voters
+    user_inputted_name : voters
+    user_inputted_name : voters
+}
+
+voters = [
+    voter,
+    voter,
+    etc
+]
+
+voter IDs have to be unique
+
+voter = {
+    "ID" : randint()
+}
+
+voter rankings must also be unique for every candidate
+
+for voter in voters:
+    voter = {
+        "ID" : randint()
+    }
+
+    for i in range(candidates):
+        candidates[name] = randint()
+
+counting votes will proceed until someone has >50%
+lowest voted candidate will be eliminated
+their tier one voters will then be added to the voter's second rank vote
