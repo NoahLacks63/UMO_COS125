@@ -11,7 +11,10 @@
 import random
 
 def main():
-    used_numbers = set()
+    """
+    Initializes our candidates, voters, and calculates who is ranked first the most.
+    """
+    used_numbers = list()
 
     candidates = {
         input("Enter candidate one's name: "): [],
@@ -26,7 +29,7 @@ def main():
     num_voters = int(input("Enter number of voters: "))
 
     for i in range(num_voters):
-        used_nums = set()
+        used_nums = list()
 
         first_choice = candidate_names[rank_candidates(used_nums) - 1]
 
@@ -38,67 +41,33 @@ def main():
             4 : candidate_names[rank_candidates(used_nums)],
             5 : candidate_names[rank_candidates(used_nums)]
         })
-    
-    round = 1
-    winner = None
-    while winner == None:
-        print_round(candidates, round)
 
-        for candidate, voters in candidates.items():
-            if len(voters) > num_voters / 2:
-                winner = candidate
-        
-        round += 1
-        
-        if winner == None:
-            vote_round(candidates)
+    winner = list(candidates.keys())[0]
+    for candidate in candidates.keys():
+        if len(candidates[winner]) < len(candidates[candidate]):
+            winner = candidate
+    
+    print(f"Winner: {winner}")
 
 def unique_int(used_numbers, min, max):
+    """
+    Provides a random int that is not listed in used_numbers.
+
+    Args:
+        used_numbers (list): A list of numbers that have already been used.
+        min (int): The minimum random int.
+        max (int): The maximum random int.
+    """
     num = random.randint(min, max)
 
     while num in used_numbers:
         num = random.randint(min, max)
 
-    used_numbers.add(num)
+    used_numbers.append(num)
 
     return num
 
-
-def vote_round(candidates):
-    loser = list(candidates.keys())[0]
-
-    for key, value in candidates.items():
-        if len(candidates[loser]) >= len(value):
-            loser = key
-    
-    for voter in candidates[loser]:
-        voter.pop(list(voter.keys())[1])
-
-        next_rank = voter[list(voter.keys())[1]]
-
-        sentinal = True
-        while sentinal:
-            for candidate in candidates.keys():
-                if next_rank == candidate:
-                    sentinal = False
-            
-            if sentinal:
-                voter.pop(list(voter.keys())[1])
-                next_rank = voter[list(voter.keys())[1]]
-
-        candidates[next_rank].append(voter)
-    
-    candidates.pop(loser)
-    print(f"Loser: {loser}")
-
 def rank_candidates(used_nums):
     return unique_int(used_nums, 0, 4)
-
-def print_round(candidates, round):
-    print(f"\nRound: {round}")
-    print("--------------------")
-
-    for candidate, voters in candidates.items():
-        print(f"{candidate:5} | {len(voters)}")
 
 main()
