@@ -1,0 +1,6 @@
+structural code decisions
+
+A while loop is more applicable for the simulation because there isn't a defined end
+a for loop is more applicable or the dining venue because it has a defined end point
+
+it allows you to dynamically control how many days the simulation can run

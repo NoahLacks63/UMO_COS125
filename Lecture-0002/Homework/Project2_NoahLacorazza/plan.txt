@@ -1,0 +1,69 @@
+INPUT_FILE = "simplifiedTelemetry500.txt"
+OUTPUT_FILE = "analysis_log.txt"
+
+master_dict = {
+    "Mission1" : {
+        "Subsystem1" : {
+            T1 : T2
+        },
+        "Subsystem2" : {
+            T1 : T2
+        }
+    }
+}
+
+Level 1:
+mission_identifier = "[SEGMENT_ID:"
+
+Level 2:
+
+
+Level 3:
+datum = "        1000,95.90".strip().split(",")
+datum[0] = (int) datum[0]
+datum[1] = (float) datum[1]
+
+{
+    datum[0] : datum[1]  #same as T1 and T2
+}
+
+# functions
+def find_min(d):
+    items = list(d.items())
+
+    if len(items) == 1:
+        return items[0][1]
+
+    key, value = items[0]
+    rest_min = find_min(dict(items[1:]))
+
+    if value < rest_min:
+        return value
+    else:
+        return rest_min
+
+def find_max(d):
+    items = list(d.items())
+
+    if len(items) == 1:
+        return items[0][1]
+
+    key, value = items[0]
+    rest_max = find_min(dict(items[1:]))
+
+    if value > rest_min:
+        return value
+    else:
+        return rest_max
+
+def write_log(message, filename):
+    try:
+        with open(filename, "x") as f:
+            f.write(message)
+
+    except FileExistsError:
+        write_log(message, input("Try a new file name: ))
+    
+
+# main() description
+parse info into master_dict

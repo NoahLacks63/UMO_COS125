@@ -1,0 +1,71 @@
+Initial user inputs {
+    Scenario choices: Farm, City
+
+    Simulation iterations: int
+}
+
+I/O {
+    start_data.txt: Initial population counts
+
+    weather.csv: Weather data for each iteration
+
+    simulation_log.txt: Logs iteration events and final summary
+
+    state.txt: Saves the simulation state for later continuation
+}
+
+simulation_state = {
+    "scenario" : "Farm" or "City",
+    "people" : 0,
+    "pets" : 0,
+    "livestock" : 0,
+    "pests" : 0,
+    "weather" : csv
+}
+
+def initialize_data():
+    opens start_data.txt and parses relavent information
+
+def get_weather(iteration):
+    gets the weather based on the current iteration
+
+def record_data():
+    records data at the end of the simulation
+
+weather.csv = {
+    holds weather data for each week of the year
+
+    week#, parcipitation, temperature
+
+    each row is a week/iteration
+}
+
+state = {
+    holds the current state(iteration) of the simulation
+
+    used as a save point so the simulation can be paused
+}
+
+log = {
+    records the outcome of each iteration
+}
+
+def main():
+    min(input("Input the number of iterations you would like to run"), len(weather))
+
+def simulate(iteration):
+    weather = get_weather(iteration)
+
+    if weather.rainfall_cm < LOW_RAINFALL:
+        pets/livestock *= .9
+    elif weather.rainfall_cm > HIGH_RAINFALL and weather.temperature > HIGH_TEMP:
+        pests *= random.randint(110, 120) / 100
+
+def pest_population(pests, pets/livestock, people):
+    if pests > (pets/livestock + people) * 1.3:
+        people *= .95
+        pets/livestock *= .95
+
+def demographic_transition(population):
+    lost_pop = population * (1 - DEATH RATE)
+    gained_pop = population * (1 + BIRTH_RATE)

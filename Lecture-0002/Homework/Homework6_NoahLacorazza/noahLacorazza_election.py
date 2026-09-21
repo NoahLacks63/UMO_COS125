@@ -11,63 +11,25 @@
 import random
 
 def main():
-    """
-    Initializes our candidates, voters, and calculates who is ranked first the most.
-    """
-    used_numbers = list()
+    candidates = build_ballot()[0]
+    num_candidates = build_ballot()[1]
 
-    candidates = {
-        input("Enter candidate one's name: "): [],
-        input("Enter candidate two's name: "): [],
-        input("Enter candidate three's name: "): [],
-        input("Enter candidate four's name: "): [],
-        input("Enter candidate five's name: "): []
-    }
 
-    candidate_names = list(candidates.keys())
+
+def build_ballot():
+    candidates = {}
+    num_candidates = int(input("Enter number of candidates (greater than 3): "))
+
+    while num_candidates < 3:
+        num_candidates = int(input("Enter number of candidates (greater than 3): "))
+
+    for n in range(1, num_candidates + 1):
+        candidates[input(f"Enter candidate {n}'s name: ")] = []
     
-    num_voters = int(input("Enter number of voters: "))
+    return [candidates, num_candidates]
 
-    for i in range(num_voters):
-        used_nums = list()
+def build_electorate(num_candidates):
 
-        first_choice = candidate_names[rank_candidates(used_nums) - 1]
+    electorate = []
 
-        candidates[first_choice].append({
-            "ID" : unique_int(used_numbers, 0, 1000000),
-            1 : first_choice,
-            2 : candidate_names[rank_candidates(used_nums)],
-            3 : candidate_names[rank_candidates(used_nums)],
-            4 : candidate_names[rank_candidates(used_nums)],
-            5 : candidate_names[rank_candidates(used_nums)]
-        })
-
-    winner = list(candidates.keys())[0]
-    for candidate in candidates.keys():
-        if len(candidates[winner]) < len(candidates[candidate]):
-            winner = candidate
-    
-    print(f"Winner: {winner}")
-
-def unique_int(used_numbers, min, max):
-    """
-    Provides a random int that is not listed in used_numbers.
-
-    Args:
-        used_numbers (list): A list of numbers that have already been used.
-        min (int): The minimum random int.
-        max (int): The maximum random int.
-    """
-    num = random.randint(min, max)
-
-    while num in used_numbers:
-        num = random.randint(min, max)
-
-    used_numbers.append(num)
-
-    return num
-
-def rank_candidates(used_nums):
-    return unique_int(used_nums, 0, 4)
-
-main()
+    for n in range(input("")):

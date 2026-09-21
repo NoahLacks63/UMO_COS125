@@ -1,0 +1,36 @@
+Scenario: City
+	People: 100
+	Pets: 50
+	Pests: 200
+	Rain: 1	Temp: 2
+
+Scenario: City
+	People: 95
+	Pets: 0
+	Pests: 234
+	Rain: 1	Temp: 2
+
+Scenario: City
+	People: 90
+	Pets: 0
+	Pests: 266
+	Rain: 2	Temp: 1
+
+Scenario: Farm
+	People: 100
+	Livestock: 50
+	Pests: 200
+	Rain: 1	Temp: 2
+
+Scenario: Farm
+	People: 95
+	Livestock: 47
+	Pests: 228
+	Rain: 1	Temp: 2
+
+Scenario: Farm
+	People: 90
+	Livestock: 44
+	Pests: 264
+	Rain: 2	Temp: 1
+

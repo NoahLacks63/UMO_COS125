@@ -1,0 +1,4 @@
+In order: initial people, initial animals, initial pests
+100
+50
+200

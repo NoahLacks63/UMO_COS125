@@ -1,0 +1,17 @@
+IPO model and pseudocode
+
+Input:
+    Student name
+    starting balance (float)
+    custom dining hall
+
+Processing:
+    dining halls list[str] + custom dining hall
+
+    for i in range(len(dining halls)):
+        print(f"Venue {i}: {dining halls[i]}")
+    
+    while balance > 5.00:
+        random(8.00, 16.00)
+    
+    
